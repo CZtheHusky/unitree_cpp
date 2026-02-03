@@ -17,7 +17,7 @@ class UnitreeConfig(Config):
     lowcmd_topic: str = "rt/lowcmd"
     lowstate_topic: str = "rt/lowstate"
 
-    enable_odometry: bool = True
+    enable_odometry: bool = False
     sport_state_topic: str = "rt/odommodestate"
 
 # Config for G1 robot

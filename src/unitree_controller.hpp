@@ -106,11 +106,13 @@ struct ImuState {
 
 struct RobotState {
     uint32_t tick;
+    double system_time;
     MotorState motor_state;
     ImuState imu_state;
     uint8_t wireless_remote[40];
 
     RobotState(size_t num_motors) : tick(0),
+                                    system_time(0.0),
                                     motor_state(num_motors) {}
 };
 

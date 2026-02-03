@@ -41,6 +41,10 @@ class RobotState(_RobotState):
     @property
     def tick(self) -> int:
         return super().tick
+
+    @property
+    def system_time(self) -> float:
+        return super().system_time
     
     @property
     def motor_state(self) -> MotorState:

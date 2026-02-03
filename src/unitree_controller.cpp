@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <cstddef>
 #include <iostream>
+#include <chrono>
 
 using std::size_t;
 
@@ -131,6 +132,8 @@ void UnitreeController::LowStateHandler(const void* message) {
 
     RobotState robot_state_tmp(num_dofs_);
 
+    robot_state_tmp.system_time =
+        std::chrono::duration<double>(std::chrono::system_clock::now().time_since_epoch()).count();
     robot_state_tmp.tick = low_state.tick();
 
     // get motor state
@@ -302,15 +305,15 @@ void UnitreeController::set_gains(const std::vector<double>& stiffness, const st
     stiffness_ = stiffness;
     damping_ = damping;
 
-    std::cout << "Gains set: stiffness = [";
-    for (const auto& s : stiffness_) {
-        std::cout << s << " ";
-    }
-    std::cout << "], damping = [";
-    for (const auto& d : damping_) {
-        std::cout << d << " ";
-    }
-    std::cout << "]" << std::endl;
+    // std::cout << "Gains set: stiffness = [";
+    // for (const auto& s : stiffness_) {
+    //     std::cout << s << " ";
+    // }
+    // std::cout << "], damping = [";
+    // for (const auto& d : damping_) {
+    //     std::cout << d << " ";
+    // }
+    // std::cout << "]" << std::endl;
 }
 
 void UnitreeController::shutdown() {

@@ -40,6 +40,7 @@ void bind_RobotState(py::module_& m) {
     py::class_<RobotState>(m, "RobotState")
         .def(py::init<size_t>())
         .def_readwrite("tick", &RobotState::tick)
+        .def_readwrite("system_time", &RobotState::system_time)
         .def_readwrite("motor_state", &RobotState::motor_state)
         .def_readwrite("imu_state", &RobotState::imu_state)
         // .def_readwrite("wireless_remote", &RobotState::wireless_remote);
